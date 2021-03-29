@@ -4,18 +4,18 @@ import it.to.peppesca.data.dao.PokemonLocal
 import it.to.peppesca.data.dto.list.PokemonResult
 import it.to.peppesca.domain.Mapper
 import it.to.peppesca.domain.models.PokemonEntity
-import it.to.peppesca.domain.models.PokemonShortDetailEntity
+import it.to.peppesca.domain.models.PokemonDetailEntity
 
 /**
  * Maps a [PokemonResult] to a subset of [PokemonEntity]s
  */
-interface PokemonLocalToPokemonShortEntityMapper :
-    Mapper<PokemonLocal, PokemonShortDetailEntity>
+interface PokemonLocalToPokemonDetailEntityMapper :
+    Mapper<PokemonLocal, PokemonDetailEntity>
 
-class PokemonLocalToPokemonShortEntityMapperImpl : PokemonLocalToPokemonShortEntityMapper {
+class PokemonLocalToPokemonDetailEntityMapperImpl : PokemonLocalToPokemonDetailEntityMapper {
 
-    override fun map(input: PokemonLocal): PokemonShortDetailEntity = with(input) {
-        PokemonShortDetailEntity(
+    override fun map(input: PokemonLocal): PokemonDetailEntity = with(input) {
+        PokemonDetailEntity(
             id = this.id,
             urlImage = this.urlImage,
             name = this.name

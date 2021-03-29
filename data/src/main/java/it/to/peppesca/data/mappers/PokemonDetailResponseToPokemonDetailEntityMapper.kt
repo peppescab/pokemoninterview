@@ -4,18 +4,18 @@ import it.to.peppesca.data.dto.detail.PokemonDetailResponse
 import it.to.peppesca.data.dto.list.PokemonResult
 import it.to.peppesca.domain.Mapper
 import it.to.peppesca.domain.models.PokemonEntity
-import it.to.peppesca.domain.models.PokemonShortDetailEntity
+import it.to.peppesca.domain.models.PokemonDetailEntity
 
 /**
  * Maps a [PokemonResult] to a subset of [PokemonEntity]s
  */
-interface PokemonDetailResponseToPokemonEntityMapper :
-    Mapper<PokemonDetailResponse, PokemonShortDetailEntity>
+interface PokemonDetailResponseToPokemonDetailEntityMapper :
+    Mapper<PokemonDetailResponse, PokemonDetailEntity>
 
-class PokemonDetailResponseToPokemonEntityMapperImpl : PokemonDetailResponseToPokemonEntityMapper {
+class PokemonDetailResponseToPokemonDetailEntityMapperImpl : PokemonDetailResponseToPokemonDetailEntityMapper {
 
-    override fun map(input: PokemonDetailResponse): PokemonShortDetailEntity = with(input) {
-        PokemonShortDetailEntity(
+    override fun map(input: PokemonDetailResponse): PokemonDetailEntity = with(input) {
+        PokemonDetailEntity(
             this.id,
             this.sprites.frontDefault ?: "",
             this.name

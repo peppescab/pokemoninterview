@@ -6,4 +6,4 @@ package it.to.peppesca.domain.models
  * @property id as entity id
  * @property urlImage as image where to find image
  */
-data class PokemonShortDetailEntity(val id: Int, val urlImage: String, val name: String)
+data class PokemonDetailEntity(val id: Int, val urlImage: String, val name: String)

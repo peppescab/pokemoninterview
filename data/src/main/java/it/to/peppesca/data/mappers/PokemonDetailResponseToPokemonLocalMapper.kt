@@ -2,6 +2,7 @@ package it.to.peppesca.data.mappers
 
 import it.to.peppesca.data.dao.PokemonLocal
 import it.to.peppesca.data.dto.detail.PokemonDetailResponse
+import it.to.peppesca.data.dto.detail.Type
 import it.to.peppesca.data.dto.list.PokemonResult
 import it.to.peppesca.domain.Mapper
 import it.to.peppesca.domain.models.PokemonEntity
@@ -16,10 +17,19 @@ class PokemonDetailResponseToPokemonLocalMapperImpl : PokemonDetailResponseToPok
 
     override fun map(input: PokemonDetailResponse): PokemonLocal = with(input) {
         PokemonLocal(
-            this.id,
-            this.name,
-            this.sprites.frontDefault ?: "",
-            this.types[0].type?.name ?: "null"
+            id,
+            name,
+            sprites.frontDefault ?: "",
+            typeToString(types),
+            baseExperience,
+            height,
+            weight
         )
+    }
+
+    private fun typeToString(inputList: List<Type>): List<String> {
+        val outputList = mutableListOf<String>()
+        inputList.forEach { outputList.add(it.type?.name.orEmpty()) }
+        return outputList
     }
 }

@@ -24,15 +24,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:onRefreshListener="@{() -> viewModel.loadPokemons()}"
-            app:refreshing="@{viewModel.pokemonList.loading}">
+            app:onRefreshListener="@{() -> viewModel.fetchPokemons()}">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_ships"
+                android:id="@+id/rv_pokemons"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-                app:spanCount="4"
+                app:spanCount="3"
                 tools:listitem="@layout/item_pokemon" />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

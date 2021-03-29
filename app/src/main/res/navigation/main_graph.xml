@@ -18,5 +18,9 @@
         android:id="@+id/pokemonDetailFragment"
         android:name="it.to.peppesca.pokemoninterview.ui.detail.PokemonDetailFragment"
         tools:layout="@layout/fragment_pokemon_detail"
-        android:label="PokemonDetailFragment" />
+        android:label="PokemonDetailFragment" >
+        <argument
+            android:name="pokemon"
+            app:argType="it.to.peppesca.pokemoninterview.ui.list.model.PokemonModel" />
+    </fragment>
 </navigation>

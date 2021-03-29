@@ -7,15 +7,18 @@ import it.to.peppesca.domain.models.PokemonEntity
 /**
  * Maps a [PokemonResult] to a subset of [PokemonEntity]s
  */
-interface PokemonResultToPokemonEntityMapper :
-    Mapper<PokemonResult, PokemonEntity>
+interface PokemonResultToPokemonEntityMapper : Mapper<PokemonResult, PokemonEntity>
 
-class PokemonResultToPokemonEntityMapperImpl : PokemonResultToPokemonEntityMapper {
+class PokemonResultToPokemonEntityMapperImpl :
+    PokemonResultToPokemonEntityMapper {
 
     override fun map(input: PokemonResult): PokemonEntity = with(input) {
         PokemonEntity(
-            input.name,
-            input.url
+            this.name,
+            extractId(this.url)
         )
     }
+
+    private fun extractId(stringToExtract: String): String =
+        stringToExtract.dropLast(1).split("/").last()
 }

@@ -15,7 +15,7 @@ interface PokemonDao {
     fun getPagedAll(): PagingSource<Int, PokemonLocal>
 
     @Query("SELECT * FROM PokemonLocal WHERE id=:pokemonId")
-    fun getPokemonById(pokemonId: String): Flow<PokemonLocal>?
+    suspend fun getPokemonById(pokemonId: String): PokemonLocal?
 
     @Insert
     suspend fun insert(pokemon: PokemonLocal)

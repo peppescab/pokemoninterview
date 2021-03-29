@@ -4,9 +4,9 @@ import it.to.peppesca.data.mappers.*
 import org.koin.dsl.module
 
 val mappersModule = module {
-    single<ResultToPokemonEntityMapper> { ResultToPokemonEntityMapperImpl() }
-    single<PokemonDetailResponseToPokemonEntityMapper> { PokemonDetailResponseToPokemonEntityMapperImpl() }
     single<PokemonDetailResponseToPokemonLocalMapper> { PokemonDetailResponseToPokemonLocalMapperImpl() }
-    single<PokemonLocalToPokemonShortEntityMapper> { PokemonLocalToPokemonShortEntityMapperImpl() }
+    single<PokemonDetailResponseToPokemonDetailEntityMapper> { PokemonDetailResponseToPokemonDetailEntityMapperImpl() }
+    single<PokemonLocalToPokemonEntityMapper> { PokemonLocalToPokemonEntityMapperImpl() }
+    single<PokemonLocalToPokemonDetailEntityMapper> { PokemonLocalToPokemonDetailEntityMapperImpl() }
     single<PokemonResultToPokemonEntityMapper> { PokemonResultToPokemonEntityMapperImpl() }
 }

@@ -43,4 +43,14 @@ interface Mapper<Input, Output> {
         return flow { input.map { it.map { it.map { output -> map(output) } } } }
     }
 
+    /**
+     * Transforms a [List] of [Input] into a [List] of [Output].
+     *
+     * @param input the input to be transformed
+     * @return transformation result
+     */
+    fun mapAsFlow(input: List<Flow<Input>>): List<Flow<Output>> {
+        return input.map { it.map { map(it) } }
+    }
+
 }

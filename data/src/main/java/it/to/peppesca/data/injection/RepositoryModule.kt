@@ -5,5 +5,5 @@ import it.to.peppesca.domain.repositories.PokemonRepository
 import org.koin.dsl.module
 
 val repositoryModule = module {
-    single<PokemonRepository> { PokemonRepositoryImpl(get(), get(),get(),get()) }
+    single<PokemonRepository> { PokemonRepositoryImpl(get(), get(),get(),get(),get(),get(),get()) }
 }

@@ -1,22 +1,34 @@
 package it.to.peppesca.data.datasource
 
-import it.to.peppesca.data.api.PokemonApi
+import android.content.Context
+import androidx.room.Room
+import it.to.peppesca.data.dao.AppDatabase
+import it.to.peppesca.data.dao.PokemonLocal
 import it.to.peppesca.data.datasource.interfaces.PokemonLocalDataSource
-import it.to.peppesca.data.datasource.interfaces.PokemonRemoteDataSource
-import it.to.peppesca.data.dto.detail.PokemonDetailResponse
-import it.to.peppesca.data.dto.list.PokemonsResponse
 
 /**
  *
  */
-class PokemonLocalDatasourceImpl(private val pokemonApi: PokemonApi) : PokemonLocalDataSource {
+class PokemonLocalDatasourceImpl(
+    context: Context
+) : PokemonLocalDataSource {
 
-    override suspend fun getPokemonList(): PokemonsResponse {
-        return pokemonApi.getPokemonList("100", "0")
+    private val dao by lazy {
+        Room.databaseBuilder(context, AppDatabase::class.java, "pokemonDB")
+            .build()
+            .pokemonDao()
     }
 
-    override suspend fun getSinglePokemon(pokemonName: String): PokemonDetailResponse {
-        return pokemonApi.getPokemonDetail(pokemonName)
+    override suspend fun getPokemonList(): List<PokemonLocal> {
+        return dao.getAll()
+    }
+
+    override suspend fun getSinglePokemon(pokemonName: String): PokemonLocal? {
+        return dao.getPokemonById(pokemonName)
+    }
+
+    override suspend fun insertPokemon(pokemonLocal: PokemonLocal) {
+        dao.insert(pokemonLocal)
     }
 
 }

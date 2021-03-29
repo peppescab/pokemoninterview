@@ -1,4 +1,4 @@
-package it.to.peppesca.pokemoninterview.ui.list.model
+package it.to.peppesca.pokemoninterview.ui.list
 
 import io.uniflow.core.flow.data.UIEvent
 

@@ -1,8 +1,7 @@
 package it.to.peppesca.domain.repositories
 
 import it.to.peppesca.domain.models.PokemonEntity
-import it.to.peppesca.domain.models.PokemonShortDetailEntity
-import kotlinx.coroutines.flow.Flow
+import it.to.peppesca.domain.models.PokemonDetailEntity
 
 
 /**
@@ -21,9 +20,9 @@ interface PokemonRepository {
      * Fetches the pokemon details given the [pokemonName].
      *
      * @param pokemonName as the pokemon name.
-     * @returns a [PokemonShortDetailEntity].
+     * @returns a [PokemonDetailEntity].
      */
-    suspend fun catchPokemon(pokemonName: String): PokemonShortDetailEntity
+    suspend fun catchPokemon(pokemonName: String): PokemonDetailEntity
 
 
     //suspend fun getPagedPokemons(pageSize: Int): PagingData<PokemonEntity>
