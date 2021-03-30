@@ -13,7 +13,7 @@ fun setPicassoSrc(imageView: ImageView, url: String?) {
     url?.let {
         Glide.with(imageView)
             .load(url)
-            .placeholder(R.drawable.pokemon_placeholder)
+            .error(R.drawable.pokemon_placeholder)
             .into(imageView)
     }
 }

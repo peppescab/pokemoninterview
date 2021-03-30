@@ -1,18 +1,18 @@
 package it.to.peppesca.pokemoninterview.injection
 
+import it.to.peppesca.pokemoninterview.ui.detail.PokemonDetailViewModel
 import it.to.peppesca.pokemoninterview.ui.list.PokemonListViewModel
-import it.to.peppesca.pokemoninterview.ui.list.model.mappers.*
+import it.to.peppesca.pokemoninterview.ui.list.model.mappers.PokemonDetailEntityToPokemonModelMapper
+import it.to.peppesca.pokemoninterview.ui.list.model.mappers.PokemonDetailEntityToPokemonModelMapperImpl
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-// MyViewModel ViewModel
 val viewModelModule = module {
-    viewModel { PokemonListViewModel(get(),get()) }
+    viewModel { PokemonListViewModel(get(), get()) }
     //viewModel { PokemonPagedViewModel(get(),get()) }
-
+    viewModel { PokemonDetailViewModel(get(), get()) }
 }
 
 val presentationMapperModule = module {
-    single<PokemonShortEntityToPokemonModelMapper> { PokemonShortEntityToPokemonModelMapperImpl() }
-    single<PokemonEntityToPokemonModelMapper> { PokemonEntityToPokemonModelMapperImpl() }
+    single<PokemonDetailEntityToPokemonModelMapper> { PokemonDetailEntityToPokemonModelMapperImpl() }
 }

@@ -17,13 +17,13 @@ class PokemonDetailResponseToPokemonLocalMapperImpl : PokemonDetailResponseToPok
 
     override fun map(input: PokemonDetailResponse): PokemonLocal = with(input) {
         PokemonLocal(
-            id,
-            name,
-            sprites.frontDefault ?: "",
-            typeToString(types),
-            baseExperience,
-            height,
-            weight
+            id = id,
+            name = name,
+            urlImage = sprites.frontDefault ?: "",
+            type = typeToString(types),
+            baseExp = baseExperience,
+            height = height,
+            weight = weight
         )
     }
 

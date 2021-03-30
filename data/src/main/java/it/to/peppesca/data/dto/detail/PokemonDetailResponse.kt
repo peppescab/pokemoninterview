@@ -13,7 +13,7 @@ data class PokemonDetailResponse(
     @Json(name = "height")
     val height: Int,
     @Json(name = "id")
-    val id: Int,
+    val id: Long,
     @Json(name = "is_default")
     val isDefault: Boolean,
     @Json(name = "location_area_encounters")

@@ -14,7 +14,7 @@ import it.to.peppesca.data.converters.Converter
 @Entity
 @TypeConverters(Converter::class)
 data class PokemonLocal(
-    @PrimaryKey val id: Int,
+    @PrimaryKey val id: Long,
     @ColumnInfo(name = "name") var name: String,
     @ColumnInfo(name = "urlImage") var urlImage: String,
     @ColumnInfo(name = "types") var type: List<String>,

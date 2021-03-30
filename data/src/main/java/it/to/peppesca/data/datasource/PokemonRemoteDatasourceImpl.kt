@@ -11,11 +11,11 @@ import it.to.peppesca.data.dto.list.PokemonsResponse
 class PokemonRemoteDatasourceImpl(private val pokemonApi: PokemonApi) : PokemonRemoteDataSource {
 
     override suspend fun getPokemonList(): PokemonsResponse {
-        return pokemonApi.getPokemonList("100", "0")
+        return pokemonApi.getPokemonList("250", "0")
     }
 
-    override suspend fun getSinglePokemon(pokemonName: String): PokemonDetailResponse {
-        return pokemonApi.getPokemonDetail(pokemonName)
+    override suspend fun getSinglePokemon(pokemonId: Long): PokemonDetailResponse {
+        return pokemonApi.getPokemonDetail(pokemonId)
     }
 /*
     override fun getPagedPokemons(pageSize: Int): PagingData<String, PokemonResult> {

@@ -28,12 +28,12 @@ class PokemonRepositoryImpl(
         }
     }
 
-    override suspend fun catchPokemon(pokemonName: String): PokemonDetailEntity {
+    override suspend fun catchPokemon(pokemonId: Long): PokemonDetailEntity {
 
-        pokemonLocalDataSource.getSinglePokemon(pokemonName)?.let {
+        pokemonLocalDataSource.getSinglePokemon(pokemonId)?.let {
             return pokemonLocalToPokemonDetailEntityMapper.map(it)
         } ?: run {
-            val remotePokemon = pokemonRemoteDataSource.getSinglePokemon(pokemonName)
+            val remotePokemon = pokemonRemoteDataSource.getSinglePokemon(pokemonId)
             val pokemonShort =
                 pokemonDetailResponseToPokemonDetailEntityMapper.map(remotePokemon)
             pokemonLocalDataSource.insertPokemon(pokemonEntityToPokemonLocalMapper.map(remotePokemon))

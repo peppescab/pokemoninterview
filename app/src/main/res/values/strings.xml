@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">PokemonInterview</string>
     <string name="this_is_an_avatar">This is an avatar</string>
+    <string name="generic_error">Error occurred</string>
+
+    <string name="detail_weight"><![CDATA[<b>Weight:</b> %d Kg]]> </string>
+
+    <string name="detail_height"><![CDATA[<b>Height:</b> %d]]></string>
+    <string name="detail_base_exp"><![CDATA[<b>Base Exp:</b> %d]]></string>
+    <string name="type">Type:</string>
+
 </resources>

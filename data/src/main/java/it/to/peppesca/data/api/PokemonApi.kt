@@ -24,10 +24,10 @@ interface PokemonApi {
     ): PokemonsResponse
 
     /**
-     * Fetches the pokemon of a particular  [pokemonName].
+     * Fetches the pokemon of a particular  [pokemonId].
      *
-     * @param pokemonName as pokemon name.
+     * @param pokemonId as pokemon id.
      */
-    @GET("pokemon/{pokemon_name}/")
-    suspend fun getPokemonDetail(@Path("pokemon_name") pokemonName: String): PokemonDetailResponse
+    @GET("pokemon/{pokemon_id}/")
+    suspend fun getPokemonDetail(@Path("pokemon_id") pokemonId: Long): PokemonDetailResponse
 }

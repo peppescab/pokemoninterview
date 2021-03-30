@@ -10,7 +10,7 @@ interface PokemonRemoteDataSource {
 
     suspend fun getPokemonList(): PokemonsResponse
 
-    suspend fun getSinglePokemon(pokemonName: String): PokemonDetailResponse
+    suspend fun getSinglePokemon(pokemonId: Long): PokemonDetailResponse
 
    // fun getPagedPokemons(pageSize: Int): Flow<PagingData<String, PokemonResult>>
 }

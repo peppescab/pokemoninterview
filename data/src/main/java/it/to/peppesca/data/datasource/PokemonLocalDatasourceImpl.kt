@@ -23,8 +23,8 @@ class PokemonLocalDatasourceImpl(
         return dao.getAll()
     }
 
-    override suspend fun getSinglePokemon(pokemonName: String): PokemonLocal? {
-        return dao.getPokemonById(pokemonName)
+    override suspend fun getSinglePokemon(pokemonId: Long): PokemonLocal? {
+        return dao.getPokemonById(pokemonId)
     }
 
     override suspend fun insertPokemon(pokemonLocal: PokemonLocal) {

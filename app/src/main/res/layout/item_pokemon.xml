@@ -14,9 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:foreground="?attr/selectableItemBackground"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="4dp"
-        android:foreground="?attr/selectableItemBackground"
         app:cardElevation="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,7 +26,7 @@
             <ImageView
                 android:id="@+id/iv_image"
                 android:layout_width="@dimen/avatar_size"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/avatar_size"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:adjustViewBounds="true"
@@ -34,7 +34,7 @@
                 android:glideSrc="@{pokemonItem.urlImage}"
                 android:scaleType="fitXY"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_price"
+                app:layout_constraintTop_toBottomOf="@+id/tv_id"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
@@ -54,18 +54,31 @@
                 tools:text="Super Ship" />
 
             <TextView
-                android:id="@+id/tv_price"
+                android:id="@+id/tv_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_medium"
                 android:layout_marginTop="@dimen/margin_medium"
-                android:text="@{pokemonItem.id}"
+                android:padding="6dp"
+                android:minWidth="@dimen/margin_small"
+                android:background="@drawable/oval_shape"
+                android:elevation="4dp"
+                android:text="@{String.valueOf(pokemonItem.id)}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@color/green"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="25" />
+                tools:text="2" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="16dp"
+                android:background="@{context.getColor(pokemonItem.colorResource)}"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_id"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_id" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </layout>

@@ -1,7 +1,7 @@
 package it.to.peppesca.domain.repositories
 
-import it.to.peppesca.domain.models.PokemonEntity
 import it.to.peppesca.domain.models.PokemonDetailEntity
+import it.to.peppesca.domain.models.PokemonEntity
 
 
 /**
@@ -17,12 +17,12 @@ interface PokemonRepository {
     suspend fun fecthPokemons(): List<PokemonEntity>
 
     /**
-     * Fetches the pokemon details given the [pokemonName].
+     * Fetches the pokemon details given the [pokemonId].
      *
-     * @param pokemonName as the pokemon name.
+     * @param pokemonId as the id of pokemon.
      * @returns a [PokemonDetailEntity].
      */
-    suspend fun catchPokemon(pokemonName: String): PokemonDetailEntity
+    suspend fun catchPokemon(pokemonId: Long): PokemonDetailEntity
 
 
     //suspend fun getPagedPokemons(pageSize: Int): PagingData<PokemonEntity>

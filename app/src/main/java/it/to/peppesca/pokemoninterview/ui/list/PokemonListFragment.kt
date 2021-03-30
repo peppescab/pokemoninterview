@@ -21,7 +21,7 @@ class PokemonListFragment : BaseFragment<FragmentPokemonListBinding>() {
     private val pokemonAdapter = PokemonsAdapter { pokemonModel ->
         findNavController().navigate(
             PokemonListFragmentDirections.actionPokemonListFragmentToPokemonDetailFragment(
-                pokemonModel
+                pokemonModel.id
             )
         )
 

@@ -14,11 +14,11 @@ class PokemonResultToPokemonEntityMapperImpl :
 
     override fun map(input: PokemonResult): PokemonEntity = with(input) {
         PokemonEntity(
-            this.name,
-            extractId(this.url)
+            id = extractId(this.url),
+            name = name
         )
     }
 
-    private fun extractId(stringToExtract: String): String =
-        stringToExtract.dropLast(1).split("/").last()
+    private fun extractId(stringToExtract: String): Long =
+        stringToExtract.dropLast(1).split("/").last().toLong()
 }

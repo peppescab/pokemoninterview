@@ -15,8 +15,8 @@ class PokemonLocalToPokemonEntityMapperImpl : PokemonLocalToPokemonEntityMapper 
 
     override fun map(input: PokemonLocal): PokemonEntity = with(input) {
         PokemonEntity(
-            name = this.name,
-            id = this.id.toString()
+            id = id,
+            name = name
         )
     }
 }
