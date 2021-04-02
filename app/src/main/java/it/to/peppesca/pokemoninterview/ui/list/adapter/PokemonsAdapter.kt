@@ -46,28 +46,18 @@ class PokemonsAdapter(
 
     override fun getItemCount() = pokemonList.size
 
-    /**
-     * [updateRecycler] will update the recyclerView with a list of [PokemonModel]
-     *
-     * @param newPokemons is the list of Item to populate
-     */
-    fun updateRecycler(newPokemons: List<PokemonModel>) {
-        pokemonList = newPokemons
-        notifyDataSetChanged()
-    }
-
     inner class ViewHolder(var binding: ItemPokemonBinding) :
         RecyclerView.ViewHolder(binding.root) {
         init {
             itemView.setOnClickListener {
                 binding.pokemonItem?.let {
-                    callback.onItemSelected(it)
+            //        callback.onItemSelected(it)
                 }
             }
         }
 
         fun setPirateShip(pirateShip: PokemonModel) {
-            binding.pokemonItem = pirateShip
+      //      binding.pokemonItem = pirateShip
         }
     }
 }
