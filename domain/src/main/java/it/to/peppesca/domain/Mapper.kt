@@ -1,7 +1,5 @@
 package it.to.peppesca.domain
 
-import androidx.paging.PagingData
-import androidx.paging.map
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
@@ -31,16 +29,6 @@ interface Mapper<Input, Output> {
             result.add(map(item))
         }
         return result
-    }
-
-    /**
-     * Transforms a [List] of [Input] into a [List] of [Output].
-     *
-     * @param input the input to be transformed
-     * @return transformation result
-     */
-    fun map(input: Flow<PagingData<List<Input>>>): Flow<PagingData<List<Output>>> {
-        return flow { input.map { it.map { it.map { output -> map(output) } } } }
     }
 
     /**

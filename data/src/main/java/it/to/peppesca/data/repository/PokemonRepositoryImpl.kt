@@ -3,8 +3,8 @@ package it.to.peppesca.data.repository
 import it.to.peppesca.data.datasource.interfaces.PokemonLocalDataSource
 import it.to.peppesca.data.datasource.interfaces.PokemonRemoteDataSource
 import it.to.peppesca.data.mappers.*
-import it.to.peppesca.domain.models.PokemonEntity
 import it.to.peppesca.domain.models.PokemonDetailEntity
+import it.to.peppesca.domain.models.PokemonEntity
 import it.to.peppesca.domain.repositories.PokemonRepository
 
 class PokemonRepositoryImpl(
@@ -18,11 +18,11 @@ class PokemonRepositoryImpl(
 ) : PokemonRepository {
 
 
-    override suspend fun fecthPokemons(): List<PokemonEntity> {
+    override suspend fun fetchPokemons(offset: Int): List<PokemonEntity> {
         val pokemoIdsList = pokemonLocalDataSource.getPokemonList()
 
-        return if (pokemoIdsList.isEmpty()) {
-            resultToPokemonEntityMapper.map(pokemonRemoteDataSource.getPokemonList().results)
+        return if (pokemoIdsList.size <= offset) {
+            return resultToPokemonEntityMapper.map(pokemonRemoteDataSource.getPokemonList(offset = offset).results)
         } else {
             pokemonLocalToPokemonEntityMapper.map(pokemoIdsList)
         }
@@ -39,13 +39,5 @@ class PokemonRepositoryImpl(
             pokemonLocalDataSource.insertPokemon(pokemonEntityToPokemonLocalMapper.map(remotePokemon))
             return pokemonShort
         }
-
-
     }
-/*
-    override suspend fun getPagedPokemons(pageSize: Int): PagingData<PokemonEntity>
-        = Pager(PagingConfig(pageSize)) { pokemonRemoteDataSource.getPagedPokemons(pageSize) }
-*/
-
-
 }

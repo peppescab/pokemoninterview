@@ -8,9 +8,8 @@ import it.to.peppesca.data.dto.list.PokemonsResponse
  */
 interface PokemonRemoteDataSource {
 
-    suspend fun getPokemonList(): PokemonsResponse
+    suspend fun getPokemonList(offset: Int): PokemonsResponse
 
     suspend fun getSinglePokemon(pokemonId: Long): PokemonDetailResponse
 
-   // fun getPagedPokemons(pageSize: Int): Flow<PagingData<String, PokemonResult>>
 }

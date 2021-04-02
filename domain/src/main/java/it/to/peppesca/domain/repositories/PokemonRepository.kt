@@ -5,7 +5,7 @@ import it.to.peppesca.domain.models.PokemonEntity
 
 
 /**
- * Repository to interact with apartments data.
+ * Repository to interact with pokemons data.
  */
 interface PokemonRepository {
 
@@ -14,7 +14,7 @@ interface PokemonRepository {
      *
      * @returns a list of [PokemonEntity].
      */
-    suspend fun fecthPokemons(): List<PokemonEntity>
+    suspend fun fetchPokemons(offset: Int): List<PokemonEntity>
 
     /**
      * Fetches the pokemon details given the [pokemonId].
@@ -23,7 +23,4 @@ interface PokemonRepository {
      * @returns a [PokemonDetailEntity].
      */
     suspend fun catchPokemon(pokemonId: Long): PokemonDetailEntity
-
-
-    //suspend fun getPagedPokemons(pageSize: Int): PagingData<PokemonEntity>
 }

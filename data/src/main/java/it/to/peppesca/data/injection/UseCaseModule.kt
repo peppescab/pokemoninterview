@@ -1,6 +1,7 @@
 package it.to.peppesca.data.injection
 
 import it.to.peppesca.domain.usecase.GetPokemonByIdUseCase
+import it.to.peppesca.domain.usecase.GetPokemonListPagedUseCase
 import it.to.peppesca.domain.usecase.GetPokemonListUseCase
 import org.koin.dsl.module
 
@@ -10,5 +11,7 @@ import org.koin.dsl.module
 val useCaseModule = module {
     factory { GetPokemonListUseCase(get()) }
     factory { GetPokemonByIdUseCase(get()) }
+    factory { GetPokemonListPagedUseCase(get()) }
+
 }
 

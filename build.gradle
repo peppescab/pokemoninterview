@@ -92,6 +92,9 @@ buildscript {
 
         material_diaog_version = "3.3.0"
         kotlin_version = '1.4.31'
+
+        pagingVersion = '3.0.0-beta01'
+
     }
 
     repositories {
