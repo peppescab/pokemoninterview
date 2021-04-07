@@ -47,11 +47,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    //Moshi
-    implementation "com.squareup.retrofit2:converter-moshi:2.4.0"
-    implementation "com.squareup.moshi:moshi:1.11.0"
-    kapt "com.squareup.moshi:moshi-kotlin-codegen:1.11.0"
-
     //Paging
     api "androidx.paging:paging-runtime-ktx:3.0.0-beta03"
     api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -66,4 +61,10 @@ dependencies {
     testApi "org.koin:koin-test:$koin_version"
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3'
+
+    //Kluent
+    testImplementation "org.amshove.kluent:kluent:$kluent_version"
+
+    //Mockk
+    testApi "io.mockk:mockk:$mockk_version"
 }

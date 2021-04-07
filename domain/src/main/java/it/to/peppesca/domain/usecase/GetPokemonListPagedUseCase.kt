@@ -9,11 +9,10 @@ import it.to.peppesca.domain.usecase.base.ResultUseCase
 import kotlinx.coroutines.flow.Flow
 
 /**
- * This use case return a [PagingData] result for [PokemonDetailEntity].
+ * This use case returns a [PagingData] result for [PokemonDetailEntity].
  */
 class GetPokemonListPagedUseCase(private val getPokemonListUseCase: GetPokemonListUseCase) :
     ResultUseCase<Flow<PagingData<PokemonDetailEntity>>> {
-
 
     override suspend fun execute(): Flow<PagingData<PokemonDetailEntity>> {
         return Pager(PagingConfig(pageSize = SINGLE_PAGE_LIMIT)) {
@@ -43,10 +42,6 @@ class GetPokemonListPagedUseCase(private val getPokemonListUseCase: GetPokemonLi
 
         override fun getRefreshKey(state: PagingState<Int, PokemonDetailEntity>): Int? {
             return state.anchorPosition?.let { anchorPosition ->
-                // This loads starting from previous page, but since PagingConfig.initialLoadSize spans
-                // multiple pages, the initial load will still load items centered around
-                // anchorPosition. This also prevents needing to immediately launch prepend due to
-                // prefetchDistance.
                 state.closestPageToPosition(anchorPosition)?.prevKey
             }
         }
