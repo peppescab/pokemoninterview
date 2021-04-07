@@ -16,19 +16,26 @@ class PokemonRepositoryImpl(
     private val pokemonLocalToPokemonEntityMapper: PokemonLocalToPokemonEntityMapper,
     private val pokemonDetailResponseToPokemonDetailEntityMapper: PokemonDetailResponseToPokemonDetailEntityMapper
 ) : PokemonRepository {
-
-
+    /**
+     * Search in database first if not found search in network
+     */
     override suspend fun fetchPokemons(offset: Int): List<PokemonEntity> {
-        val pokemoIdsList = pokemonLocalDataSource.getPokemonList()
 
-        return if (pokemoIdsList.size <= offset) {
+        val pokemonsLocal = pokemonLocalDataSource.getPokemonRanged(offset)
+        return if (pokemonsLocal.isEmpty()) {
             return resultToPokemonEntityMapper.map(pokemonRemoteDataSource.getPokemonList(offset = offset).results)
         } else {
-            pokemonLocalToPokemonEntityMapper.map(pokemoIdsList)
+            pokemonLocalToPokemonEntityMapper.map(pokemonsLocal)
         }
     }
 
-    override suspend fun catchPokemon(pokemonId: Long): PokemonDetailEntity {
+    /**
+     * Get a pokemon by id if is found in local db it returns it
+     * otherwise search in network and save the result in local.
+     *
+     * @param pokemonId the id of pokemon to be retrieved.
+     */
+    override suspend fun catchPokemon(pokemonId: Int): PokemonDetailEntity {
 
         pokemonLocalDataSource.getSinglePokemon(pokemonId)?.let {
             return pokemonLocalToPokemonDetailEntityMapper.map(it)

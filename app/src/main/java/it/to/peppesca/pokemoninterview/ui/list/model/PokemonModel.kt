@@ -13,7 +13,7 @@ import kotlinx.android.parcel.Parcelize
  */
 @Parcelize
 data class PokemonModel(
-    val id: Long,
+    val id: Int,
     val name: String,
     val urlImage: String,
     val type: List<String>,

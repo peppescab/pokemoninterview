@@ -5,7 +5,7 @@ import it.to.peppesca.domain.repositories.PokemonRepository
 import it.to.peppesca.domain.usecase.base.ActionResultUseCase
 
 /**
- *
+ *This use case return a [PokemonsPagedEntity].
  */
 class GetPokemonListUseCase(private val pokemonRepository: PokemonRepository) :
     ActionResultUseCase<GetPokemonListUseCase.Params, PokemonsPagedEntity> {
@@ -17,5 +17,5 @@ class GetPokemonListUseCase(private val pokemonRepository: PokemonRepository) :
         page = params.start
     )
 
-    data class Params(val start: Int, val limit: Int)
+    data class Params(val start: Int)
 }

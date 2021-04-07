@@ -16,8 +16,6 @@ class PokemonPagedAdapter(
 ) : PagingDataAdapter<PokemonModel, PokemonPagedAdapter.ViewHolder>(
     PokemonModelComparator
 ) {
-    //private var pokemonList = listOf<PokemonDetailEntity>()
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return ViewHolder(
@@ -59,7 +57,6 @@ class PokemonPagedAdapter(
         val pokemonSingle = getItem(position)
         pokemonSingle?.let{
             holder.setPokemonModel(it)
-            Log.d("NoteAdapter", it.name)
         }
 
     }

@@ -19,6 +19,6 @@ class PokemonResultToPokemonEntityMapperImpl :
         )
     }
 
-    private fun extractId(stringToExtract: String): Long =
-        stringToExtract.dropLast(1).split("/").last().toLong()
+    private fun extractId(stringToExtract: String): Int =
+        stringToExtract.dropLast(1).split("/").last().toInt()
 }

@@ -22,5 +22,5 @@ interface PokemonRepository {
      * @param pokemonId as the id of pokemon.
      * @returns a [PokemonDetailEntity].
      */
-    suspend fun catchPokemon(pokemonId: Long): PokemonDetailEntity
+    suspend fun catchPokemon(pokemonId: Int): PokemonDetailEntity
 }

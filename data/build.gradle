@@ -49,11 +49,11 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     //Retrofit
-    api "com.squareup.retrofit2:retrofit:$retrofit_version"
-    api "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    api "com.squareup.okhttp3:okhttp:$okhttp_version"
-    api "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
-    api "com.google.code.gson:gson:$gson_version"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+    implementation "com.google.code.gson:gson:$gson_version"
 
     //Moshi
     implementation "com.squareup.retrofit2:converter-moshi:2.4.0"
@@ -61,14 +61,17 @@ dependencies {
     kapt "com.squareup.moshi:moshi-kotlin-codegen:1.11.0"
 
     //Room
-    def room_ver="2.3.0-rc01"
-    implementation "androidx.room:room-runtime:$room_ver"
-    kapt "androidx.room:room-compiler:$room_ver"
-    implementation "androidx.room:room-ktx:$room_ver"
+    def room_version = "2.2.6"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    testImplementation "androidx.room:room-testing:$room_version"
 
-    //Paging
-    def paging_version = "3.0.0-beta03"
-    api "androidx.paging:paging-runtime-ktx:$paging_version"
-    // alternatively - without Android dependencies for tests
-    api "androidx.paging:paging-common-ktx:$paging_version"
+    //Kluent
+    testImplementation "org.amshove.kluent:kluent:$kluent_version"
+
+    //Mockk
+    testImplementation "io.mockk:mockk:$mockk_version"
+
+
 }

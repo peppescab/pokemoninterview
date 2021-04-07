@@ -15,10 +15,12 @@ interface PokemonApi {
      * Fetches a lists of pokemon with their ids.
      *
      * @param offset as the offset number of starting.
+     * @param limit as the limit of id of pokemons.
      */
     @GET("pokemon")
     suspend fun getPokemonList(
         @Query("offset") offset: Int?,
+        @Query("limit") limit: Int?,
     ): PokemonsResponse
 
     /**
@@ -27,5 +29,5 @@ interface PokemonApi {
      * @param pokemonId as pokemon id.
      */
     @GET("pokemon/{pokemon_id}/")
-    suspend fun getPokemonDetail(@Path("pokemon_id") pokemonId: Long): PokemonDetailResponse
+    suspend fun getPokemonDetail(@Path("pokemon_id") pokemonId: Int): PokemonDetailResponse
 }

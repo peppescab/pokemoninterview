@@ -12,7 +12,7 @@ class PokemonDetailViewModel(
     private val pokemonDetailEntityToPokemonModelMapper: PokemonDetailEntityToPokemonModelMapper
 ) : AndroidDataFlow() {
 
-    fun getAPokemonById(pokemonId: Long) = action(
+    fun getAPokemonById(pokemonId: Int) = action(
         onAction = {
             setState(PokemonDetailState.Loading)
             val pokemoList =

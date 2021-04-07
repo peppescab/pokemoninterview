@@ -1,23 +1,21 @@
 package it.to.peppesca.data.injection
 
 import it.to.peppesca.data.api.PokemonApi
+import it.to.peppesca.domain.common.GeneralValues.POKEMON_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-import java.util.*
-
-
-private val loggingInterceptor      = HttpLoggingInterceptor().apply {
+/**
+ * Module about network and configuration for Retrofit.
+ */
+private val loggingInterceptor = HttpLoggingInterceptor().apply {
     level = HttpLoggingInterceptor.Level.BODY
 }
 
-const val POKEMON_URL = "https://pokeapi.co/api/v2/"
-
 val serviceModule = module {
-
 
     single {
         OkHttpClient.Builder()
@@ -29,7 +27,6 @@ val serviceModule = module {
         Retrofit.Builder()
             .client(get())
             .baseUrl(POKEMON_URL)
-           // .addConverterFactory(GsonConverterFactory.create())
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
     }

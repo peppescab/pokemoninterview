@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="it.to.peppesca.pokemoninterview.ui.list.PokemonPagedListViewModel" />
+            type="it.to.peppesca.pokemoninterview.ui.list.PokemonListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,15 +16,41 @@
         android:background="@color/lightest_yellow"
         android:padding="4dp">
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_search_apartment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/margin_medium"
+            app:endIconDrawable="@android:drawable/ic_menu_search"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_search_apartment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/search_hint"
+                android:imeOptions="actionDone"
+                android:inputType="textNoSuggestions"
+                android:maxLines="1"
+                android:text="@={viewModel.searchText}"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipe_to_refresh"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:onRefreshListener="@{() -> viewModel.fetchPokemons()}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/til_search_apartment"
+            app:onRefreshListener="@{() -> viewModel.fetchPokemons()}">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_pokemons"

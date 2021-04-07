@@ -6,10 +6,10 @@ import com.bumptech.glide.Glide
 import it.to.peppesca.pokemoninterview.R
 
 /**
- * [setPicassoSrc] set a source for an imageView with Picasso
+ * [setGlideSrc] set a source for an imageView with Glide.
  */
 @BindingAdapter("android:glideSrc")
-fun setPicassoSrc(imageView: ImageView, url: String?) {
+fun setGlideSrc(imageView: ImageView, url: String?) {
     url?.let {
         Glide.with(imageView)
             .load(url)

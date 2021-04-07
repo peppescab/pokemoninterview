@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:layout_marginTop="@dimen/margin_small"
-                android:text="@string/type"
+                android:text="@{Html.fromHtml(@string/detail_type(pokemonModel.type[0]))}"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -90,7 +90,7 @@
                 android:layout_width="62dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/margin_tiny"
+                android:layout_marginTop="@dimen/margin_small"
                 android:adjustViewBounds="true"
                 android:padding="@dimen/margin_small"
                 android:scaleType="fitXY"
