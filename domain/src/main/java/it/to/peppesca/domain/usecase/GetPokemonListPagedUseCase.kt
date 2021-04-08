@@ -20,7 +20,7 @@ class GetPokemonListPagedUseCase(private val getPokemonListUseCase: GetPokemonLi
         }.flow
     }
 
-    private inner class PokemonPagingDataSource(
+    class PokemonPagingDataSource(
         private val getPokemonListUseCase: GetPokemonListUseCase
     ) : PagingSource<Int, PokemonDetailEntity>() {
 

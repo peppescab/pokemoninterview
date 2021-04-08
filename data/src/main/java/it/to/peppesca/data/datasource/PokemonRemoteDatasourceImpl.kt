@@ -11,7 +11,7 @@ import it.to.peppesca.data.dto.list.PokemonsResponse
 class PokemonRemoteDatasourceImpl(private val pokemonApi: PokemonApi) : PokemonRemoteDataSource {
 
     override suspend fun getPokemonList(offset: Int): PokemonsResponse {
-        return pokemonApi.getPokemonList(offset, offset + offset)
+        return pokemonApi.getPokemonList(offset)
     }
 
     override suspend fun getSinglePokemon(pokemonId: Int): PokemonDetailResponse {

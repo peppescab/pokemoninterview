@@ -15,12 +15,10 @@ interface PokemonApi {
      * Fetches a lists of pokemon with their ids.
      *
      * @param offset as the offset number of starting.
-     * @param limit as the limit of id of pokemons.
      */
     @GET("pokemon")
     suspend fun getPokemonList(
         @Query("offset") offset: Int?,
-        @Query("limit") limit: Int?,
     ): PokemonsResponse
 
     /**

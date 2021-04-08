@@ -72,9 +72,7 @@ class PokemonListFragment : BaseFragment<FragmentPokemonListBinding>() {
     private fun handleResult(pagindData: PagingData<PokemonModel>) {
         binding.swipeToRefresh.isRefreshing = false
         lifecycleScope.launch {
-            //  pagindData.collectLatest {
             pokemonAdapter.submitData(pagindData)
-            //}
         }
     }
 
@@ -97,17 +95,12 @@ class PokemonListFragment : BaseFragment<FragmentPokemonListBinding>() {
             /**
             This code is taken from https://medium.com/@yash786agg/jetpack-paging-3-0-android-bae37a56b92d
              **/
-            if (loadState.refresh is LoadState.Loading) {
-                handleLoading()
-            } else {
-                binding.swipeToRefresh.isRefreshing = false
+            when (loadState.refresh) {
+                is LoadState.Loading -> handleLoading()
+                is LoadState.Error -> handleError()
+                else -> binding.swipeToRefresh.isRefreshing = false
             }
-            if ((loadState.prepend is LoadState.Error
-                        || loadState.append is LoadState.Error
-                        || loadState.refresh is LoadState.Error)
-            ) {
-                handleError()
-            }
+
 
         }
     }

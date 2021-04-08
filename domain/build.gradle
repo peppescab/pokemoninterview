@@ -67,4 +67,6 @@ dependencies {
 
     //Mockk
     testApi "io.mockk:mockk:$mockk_version"
+
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.3'
 }
