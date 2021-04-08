@@ -1,4 +1,4 @@
-package it.to.peppesca.pokemoninterview.ui.detail
+package it.to.peppesca.pokemoninterview.ui.detail.model
 
 import io.uniflow.core.flow.data.UIState
 import it.to.peppesca.pokemoninterview.ui.list.model.PokemonModel

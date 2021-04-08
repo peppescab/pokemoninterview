@@ -51,9 +51,17 @@ dependencies {
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
 
+    //testing
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    testImplementation "junit:junit:$junit_version"
+    testImplementation "org.robolectric:robolectric:$robolectric_version"
+    testImplementation "org.amshove.kluent:kluent:$kluent_version"
+    testImplementation "io.mockk:mockk:$mockk_version"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_test_version"
+    testImplementation "androidx.arch.core:core-testing:$anrdoidx_core_testing_version"
+    testImplementation "org.robolectric:robolectric:$robolectric_version"
+    testImplementation "androidx.test.ext:junit:$androidx_junit_version"
+
 
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
@@ -64,19 +72,19 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
 
-    def uniflow_version = "1.0.3"
+    def uniflow_version = "1.0.5"
+    // Core
+    implementation "org.uniflow-kt:uniflow-core:$uniflow_version"
+    testImplementation "org.uniflow-kt:uniflow-test:$uniflow_version"
     implementation "org.uniflow-kt:uniflow-android:$uniflow_version"
     testImplementation "org.uniflow-kt:uniflow-android-test:$uniflow_version"
     // Extras
     implementation "org.uniflow-kt:uniflow-saferesult:$uniflow_version"
     implementation "org.uniflow-kt:uniflow-arrow:$uniflow_version"
 
-    //Glide
-    implementation 'com.github.bumptech.glide:glide:4.12.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
-
-    //Paging
-    implementation "androidx.paging:paging-runtime-ktx:3.0.0-beta03"
+    def glide_version = "4.12.0"
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
 
     api "com.jakewharton.timber:timber:$timber_version"
 

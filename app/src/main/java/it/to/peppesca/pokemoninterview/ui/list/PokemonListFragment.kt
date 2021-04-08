@@ -10,6 +10,7 @@ import androidx.paging.LoadState
 import androidx.paging.PagingData
 import com.google.android.material.snackbar.Snackbar
 import io.uniflow.android.livedata.onStates
+import it.to.peppesca.pokemoninterview.R
 import it.to.peppesca.pokemoninterview.databinding.FragmentPokemonListBinding
 import it.to.peppesca.pokemoninterview.ui.base.BaseFragment
 import it.to.peppesca.pokemoninterview.ui.list.adapter.PokemonPagedAdapter
@@ -42,7 +43,6 @@ class PokemonListFragment : BaseFragment<FragmentPokemonListBinding>() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = pokemonListViewmodel
         setupList()
-        binding.swipeToRefresh.setOnRefreshListener { pokemonAdapter.retry() }
 
         return binding.root
     }
@@ -66,7 +66,6 @@ class PokemonListFragment : BaseFragment<FragmentPokemonListBinding>() {
             }
         }
 
-
     }
 
     private fun handleResult(pagindData: PagingData<PokemonModel>) {
@@ -83,25 +82,25 @@ class PokemonListFragment : BaseFragment<FragmentPokemonListBinding>() {
     }
 
     private fun handleError() {
+        binding.swipeToRefresh.isRefreshing = false
         view?.let {
-            binding.swipeToRefresh.isRefreshing = false
-            Snackbar.make(it, "Error occurred", Snackbar.LENGTH_LONG).show()
+            Snackbar.make(it, getString(R.string.generic_error), Snackbar.LENGTH_INDEFINITE).setAction(R.string.retry) {
+                pokemonAdapter.retry()
+            }.show()
         }
     }
 
     private fun setupList() {
         binding.rvPokemons.adapter = pokemonAdapter
+
         pokemonAdapter.addLoadStateListener { loadState ->
-            /**
-            This code is taken from https://medium.com/@yash786agg/jetpack-paging-3-0-android-bae37a56b92d
-             **/
-            when (loadState.refresh) {
-                is LoadState.Loading -> handleLoading()
-                is LoadState.Error -> handleError()
-                else -> binding.swipeToRefresh.isRefreshing = false
+            if (loadState.refresh is LoadState.Loading || loadState.append is LoadState.Loading) {
+                handleLoading()
+            } else {
+                binding.swipeToRefresh.isRefreshing = false
+                if (loadState.refresh is LoadState.Error || loadState.append is LoadState.Error)
+                    handleError()
             }
-
-
         }
     }
 }

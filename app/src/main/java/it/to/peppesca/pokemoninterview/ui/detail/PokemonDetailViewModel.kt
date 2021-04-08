@@ -2,6 +2,7 @@ package it.to.peppesca.pokemoninterview.ui.detail
 
 import io.uniflow.android.AndroidDataFlow
 import it.to.peppesca.domain.usecase.GetPokemonByIdUseCase
+import it.to.peppesca.pokemoninterview.ui.detail.model.PokemonDetailState
 import it.to.peppesca.pokemoninterview.ui.list.model.mappers.PokemonDetailEntityToPokemonModelMapper
 
 /**

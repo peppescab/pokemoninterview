@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import io.uniflow.android.livedata.onStates
 import it.to.peppesca.pokemoninterview.R
 import it.to.peppesca.pokemoninterview.databinding.FragmentPokemonDetailBinding
 import it.to.peppesca.pokemoninterview.ui.base.BaseFragment
+import it.to.peppesca.pokemoninterview.ui.detail.model.PokemonDetailState
 import it.to.peppesca.pokemoninterview.ui.list.model.PokemonModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -32,7 +34,10 @@ class PokemonDetailFragment : BaseFragment<FragmentPokemonDetailBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //it was possible to send directly a parcelized PokemonModel but for test case the viewModel will download
+        // (from cache) the pokemon
         viewmodel.getAPokemonById(args.pokemonId)
+        binding.topAppBar.setNavigationOnClickListener { findNavController().popBackStack() }
 
         // Observe incoming state
         onStates(viewmodel) { state ->

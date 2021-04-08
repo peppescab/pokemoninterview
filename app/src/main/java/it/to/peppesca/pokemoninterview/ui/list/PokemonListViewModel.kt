@@ -31,11 +31,11 @@ class PokemonListViewModel(
 
     val searchMediator = MediatorLiveData<PagingData<PokemonModel>>()
 
-    var pokemonList : PagingData<PokemonModel>? = null
+    var pokemonList: PagingData<PokemonModel>? = null
 
     private val apartmentListObserver = Observer<Any> {
         pokemonList?.let { lceList ->
-            filterApartmentList(searchText.value.orEmpty(),lceList).let{
+            filterApartmentList(searchText.value.orEmpty(), lceList).let {
                 searchMediator.value = it
             }
         }
@@ -45,19 +45,23 @@ class PokemonListViewModel(
         searchMediator.addSource(searchText, apartmentListObserver)
     }
 
+    /**
+     * Load a list of pokemons and merge it with search field.
+     */
     fun fetchPokemons() {
 
         action(
             onAction = {
                 setState(PokemonListState.Loading)
-                val pokem = getPokemonListUseCase.execute().cachedIn(viewModelScope).map { pagingData ->
+
+                getPokemonListUseCase.execute().cachedIn(viewModelScope).map { pagingData ->
                     pagingData.map { mapper.map(it) }
-                }
-                pokem.collectLatest {
-                    val listFiltered = filterApartmentList(searchText.value.orEmpty(),it)
-                        setState(PokemonListState.PokemonList(listFiltered))
+                }.collectLatest {
+                    val listFiltered = filterApartmentList(searchText.value.orEmpty(), it)
+                    setState(PokemonListState.PokemonList(listFiltered))
                     pokemonList = listFiltered
                 }
+
             },
             onError = { ex, _ ->
                 setState(PokemonListState.Failed(ex))
@@ -65,10 +69,9 @@ class PokemonListViewModel(
         )
     }
 
-    private fun filterApartmentList(key: String,listToFilter:PagingData<PokemonModel>): PagingData<PokemonModel> = if (key.isEmpty()) {
+    private fun filterApartmentList(key: String, listToFilter: PagingData<PokemonModel>): PagingData<PokemonModel> = if (key.isEmpty()) {
         listToFilter
     } else {
         listToFilter.filter { it.name.contains(key, true) }
     }
-
 }

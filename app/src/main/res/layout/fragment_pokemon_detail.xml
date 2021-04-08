@@ -12,34 +12,37 @@
             type="it.to.peppesca.pokemoninterview.ui.list.model.PokemonModel" />
     </data>
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/yellow">
 
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/top_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:titleTextColor="@color/black"
+            app:navigationIconTint="@color/black"
+            tools:title="Pokemon"
+            app:title="@{pokemonModel.name}" />
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="16dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:background="@color/lightest_yellow"
             android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@{pokemonModel.name}"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="@dimen/title_size"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_pokemon_detail"
-                tools:text="Pickachu" />
-
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/top_app_bar">
 
             <ImageView
                 android:id="@+id/iv_pokemon_detail"
@@ -66,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_small"
-                android:text= "@{Html.fromHtml(@string/detail_height(pokemonModel.height))}"
+                android:text="@{Html.fromHtml(@string/detail_height(pokemonModel.height))}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <TextView
@@ -79,11 +82,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
                 android:layout_marginTop="@dimen/margin_small"
                 android:text="@{Html.fromHtml(@string/detail_type(pokemonModel.type[0]))}"
                 android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/iv_type"
@@ -92,12 +95,12 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/margin_small"
                 android:adjustViewBounds="true"
+                android:background="@drawable/oval_empty"
                 android:padding="@dimen/margin_small"
                 android:scaleType="fitXY"
-                android:background="@drawable/oval_empty"
                 tools:background="@color/red"
                 tools:src="@drawable/ic_dark" />
 
         </LinearLayout>
-    </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -9,5 +9,6 @@
     <string name="detail_base_exp"><![CDATA[<b>Base Exp:</b> %d]]></string>
     <string name="detail_type"><![CDATA[<b>Type:</b> %s]]></string>
     <string name="search_hint">Search pokemon in list</string>
+    <string name="retry">RETRY</string>
 
 </resources>
