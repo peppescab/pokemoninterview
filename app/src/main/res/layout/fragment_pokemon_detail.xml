@@ -12,37 +12,33 @@
             type="it.to.peppesca.pokemoninterview.ui.list.model.PokemonModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/yellow">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/top_app_bar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:navigationIcon="?attr/homeAsUpIndicator"
-            app:titleTextColor="@color/black"
-            app:navigationIconTint="@color/black"
-            tools:title="Pokemon"
-            app:title="@{pokemonModel.name}" />
+        android:background="@color/yellow"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:layout_marginBottom="@dimen/margin_medium"
             android:background="@color/lightest_yellow"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:padding="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/top_app_bar">
+            android:paddingBottom="@dimen/margin_medium">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/top_app_bar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/yellow"
+                app:navigationIcon="?attr/homeAsUpIndicator"
+                app:navigationIconTint="@color/black"
+                app:title="@{pokemonModel.name}"
+                app:titleTextColor="@color/black"
+                tools:title="Pokemon" />
 
             <ImageView
                 android:id="@+id/iv_pokemon_detail"
@@ -82,7 +78,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_medium"
                 android:text="@{Html.fromHtml(@string/detail_type(pokemonModel.type[0]))}"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -102,5 +98,6 @@
                 tools:src="@drawable/ic_dark" />
 
         </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 </layout>
