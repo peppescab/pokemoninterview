@@ -9,8 +9,8 @@ This is a simple project (fetching a list of pokemons from https://pokeapi.co/) 
 * Koin
 * Retrofit2 and OkHttp3
 * Coroutines + Flow
-* Moshi 
-* Glide
-* Paging with Paging3 Androd Library
-* Application is 
+* Moshi.
+* Glide.
+* Paging with Paging3 Androd Library.
+* Application is also working in offline mode.
 * Unit Tests (all main classes have been JUnit tested)
