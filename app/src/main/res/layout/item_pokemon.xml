@@ -13,10 +13,10 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/margin_tiny"
         android:foreground="?attr/selectableItemBackground"
         app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="4dp"
+        app:cardCornerRadius="@dimen/margin_tiny"
         app:cardElevation="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,8 +27,8 @@
                 android:id="@+id/iv_image"
                 android:layout_width="@dimen/avatar_size"
                 android:layout_height="@dimen/avatar_size"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_small"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/this_is_an_avatar"
                 android:glideSrc="@{pokemonItem.urlImage}"
@@ -41,7 +41,8 @@
                 android:id="@+id/tv_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="@dimen/margin_tiny"
+                android:layout_marginBottom="@dimen/margin_medium"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="@{pokemonItem.name}"
@@ -51,7 +52,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/iv_image"
                 app:layout_constraintStart_toStartOf="@+id/iv_image"
                 app:layout_constraintTop_toBottomOf="@+id/iv_image"
-                tools:text="Super Ship" />
+                tools:text="Super Pokemon" />
 
             <TextView
                 android:id="@+id/tv_id"
@@ -59,10 +60,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_medium"
                 android:layout_marginTop="@dimen/margin_medium"
-                android:padding="6dp"
-                android:minWidth="@dimen/margin_small"
                 android:background="@drawable/oval_shape"
                 android:elevation="4dp"
+                android:minWidth="@dimen/margin_small"
+                android:padding="6dp"
                 android:text="@{String.valueOf(pokemonItem.id)}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@color/black"
@@ -73,7 +74,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="16dp"
+                android:layout_height="@dimen/margin_medium"
                 android:background="@{context.getColor(pokemonItem.colorResource)}"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_id"
                 app:layout_constraintEnd_toEndOf="parent"

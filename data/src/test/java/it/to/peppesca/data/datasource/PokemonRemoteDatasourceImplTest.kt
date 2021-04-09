@@ -23,7 +23,7 @@ class PokemonRemoteDatasourceImplTest {
 
     @Test
     fun `given a list of pokemons, when all are request, then return the list`() {
-        coEvery { pokemonApi.getPokemonList(STUB_OFFSET,STUB_LIMIT) } returns POKEMON_RESPONSE_STUB
+        coEvery { pokemonApi.getPokemonList(STUB_OFFSET,STUB_OFFSET) } returns POKEMON_RESPONSE_STUB
         runBlocking {
             target.getPokemonList(STUB_OFFSET) `should be equal to` POKEMON_RESPONSE_STUB
         }
@@ -32,7 +32,7 @@ class PokemonRemoteDatasourceImplTest {
 
     @Test
     fun `given an empty list of pokemons, when all are request, then return an empty list`() {
-        coEvery { pokemonApi.getPokemonList(STUB_OFFSET,STUB_LIMIT) } returns POKEMON_RESPONSE_STUB_EMPTY
+        coEvery { pokemonApi.getPokemonList(STUB_OFFSET,STUB_OFFSET) } returns POKEMON_RESPONSE_STUB_EMPTY
         runBlocking {
             target.getPokemonList(STUB_OFFSET) `should be equal to` POKEMON_RESPONSE_STUB_EMPTY
         }
@@ -48,7 +48,6 @@ class PokemonRemoteDatasourceImplTest {
 
     companion object {
         const val STUB_OFFSET = 20
-        const val STUB_LIMIT= 40
     }
 
 

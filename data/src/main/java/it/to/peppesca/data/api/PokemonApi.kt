@@ -19,7 +19,8 @@ interface PokemonApi {
     @GET("pokemon")
     suspend fun getPokemonList(
         @Query("offset") offset: Int?,
-    ): PokemonsResponse
+        @Query("limit") limit: Int?,
+        ): PokemonsResponse
 
     /**
      * Fetches the pokemon of a particular  [pokemonId].

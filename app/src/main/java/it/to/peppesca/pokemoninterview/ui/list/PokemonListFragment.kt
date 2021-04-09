@@ -52,6 +52,8 @@ class PokemonListFragment : BaseFragment<FragmentPokemonListBinding>() {
 
         pokemonListViewmodel.fetchPokemons()
 
+        binding.swipeToRefresh.setOnRefreshListener { pokemonAdapter.retry() }
+
         pokemonListViewmodel.searchMediator.observe(viewLifecycleOwner, {
             handleResult(it)
         })
@@ -84,7 +86,7 @@ class PokemonListFragment : BaseFragment<FragmentPokemonListBinding>() {
     private fun handleError() {
         binding.swipeToRefresh.isRefreshing = false
         view?.let {
-            Snackbar.make(it, getString(R.string.generic_error), Snackbar.LENGTH_INDEFINITE).setAction(R.string.retry) {
+            Snackbar.make(it, getString(R.string.generic_error), Snackbar.LENGTH_LONG).setAction(R.string.retry) {
                 pokemonAdapter.retry()
             }.show()
         }
