@@ -1,6 +1,6 @@
 # Pokemoninterview
 
-This is a simple project for testing many new features:
+This is a simple project (fetching a list of pokemons from https://pokeapi.co/) for testing different features:
 
 * Written in 100% Kotlin
 * Pure Clean Architecture with separation in module
