@@ -15,5 +15,6 @@ This is a simple project (fetching a list of pokemons from https://pokeapi.co/) 
 * Application is also working in offline mode.
 * Unit Tests (all main classes have been JUnit tested)
 
-![Alt text](screenshoot_1.png?raw=true "Pokemons")
+![Alt text](screenshot_1.png?raw=true "Pokemons")
+
 
